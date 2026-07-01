@@ -1,0 +1,7 @@
+pyinstaller>=6.0
+pywebview>=5.0
+pyobjc-core>=10.0
+pyobjc-framework-Cocoa>=10.0
+pyobjc-framework-Quartz>=10.0
+pyobjc-framework-Security>=10.0
+pyobjc-framework-WebKit>=10.0

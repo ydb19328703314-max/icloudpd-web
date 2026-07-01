@@ -18,25 +18,12 @@ python -m pip install -r "$ROOT_DIR/desktop/requirements.txt"
 
 rm -rf "$BUILD_DIR" "$DIST_DIR"
 
-pyinstaller \
-  --noconfirm \
-  --clean \
-  --onefile \
-  --name "$HELPER_NAME" \
-  "$ROOT_DIR/desktop/icloudpd_runner.py"
+pyinstaller --noconfirm --clean --onefile --name "$HELPER_NAME" "$ROOT_DIR/desktop/icloudpd_runner.py"
 
 HELPER_BIN="$DIST_DIR/$HELPER_NAME"
 chmod +x "$HELPER_BIN"
 
-pyinstaller \
-  --noconfirm \
-  --clean \
-  --windowed \
-  --name "$APP_NAME" \
-  --collect-data icloudpd_web \
-  --hidden-import webview.platforms.cocoa \
-  --add-binary "$HELPER_BIN:." \
-  "$ROOT_DIR/desktop/launcher.py"
+pyinstaller --noconfirm --clean --windowed --name "$APP_NAME" --collect-data icloudpd_web --hidden-import webview.platforms.cocoa --add-binary "$HELPER_BIN:." "$ROOT_DIR/desktop/launcher.py"
 
 echo
 echo "Built app bundle: $DIST_DIR/$APP_NAME.app"
